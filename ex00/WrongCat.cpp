@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongWrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:08:24 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/14 17:21:11 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:12:40 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 #include <string>
 
 
-Dog::Dog(): Animal(){
-	this->type = "Dog";
-	std::cout << "🐶 has been instantiated (default constructor)." << std::endl;
+WrongCat::WrongCat(): WrongAnimal(){
+	this->type = "WrongCat";
+	std::cout << "🐱 has been instantiated (default constructor)." << std::endl;
 };
-Dog::Dog(const Dog& origin): Animal(){
+WrongCat::WrongCat(const WrongCat& origin): WrongAnimal(){
 	*this = origin;
-	std::cout << "🐶 has been copied (copy constructor)." << std::endl;
+	std::cout << "🐱 has been copied (copy constructor)." << std::endl;
 };
-Dog& Dog::operator=(const Dog& origin){
-	std::cout << "🐶 has been copied (copy assingment)." << std::endl;
+WrongCat& WrongCat::operator=(const WrongCat& origin){
+	std::cout << "🐱 has been copied (copy assingment)." << std::endl;
 	this->type = origin.type;
 	return (*this);
 };
-Dog::~Dog(){
-	std::cout << "🐶 has been deleted (default constructor)." << std::endl;
+WrongCat::~WrongCat(){
+	std::cout << "🐱 has been deleted (default constructor)." << std::endl;
 };
-void Dog::makeSound() const{
-	std::cout << "🐶 << BARK!! BARK!!" << std::endl;
+void WrongCat::makeSound() const{
+	std::cout << "🐱 << Meow... Meow..." << std::endl;
 };
