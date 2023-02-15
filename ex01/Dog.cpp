@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:08:24 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/15 14:28:26 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:59:17 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Dog& Dog::operator=(const Dog& origin){
 };
 Dog::~Dog(){
 	delete this->brain;
-	std::cout << "🐶 has been deleted (default constructor)." << std::endl;
+	std::cout << "🐶 has been deleted (default destructor)." << std::endl;
 };
 void Dog::makeSound() const{
 	std::cout << "🐶 << BARK!! BARK!!" << std::endl;
