@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:53:32 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/16 16:59:51 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:50:03 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void subjectTest(){
 	{
 		const Animal *j = new Dog();
 		const Animal *i = new Cat();
-		delete j;
-		delete i;
+		delete (Dog *)j;
+		delete (Cat *)i;
 	}
 	std::cout << "SUBJECT TEST - END" << std::endl;
 }
@@ -113,27 +113,6 @@ void testCat(){
 	std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
 	std::cout << "🐱🐱🐱_END_🐱🐱🐱" << std::endl;
 }
-void testAnimal(){
-	std::cout << std::endl << "ANIMAL TEST - START" << std::endl;
-	{
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
-		Animal stack_animal;
-		Animal *heap_animal = new Animal();
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
-
-		std::cout << "stack_animal getType: " << stack_animal.getType() << std::endl;
-		std::cout << "stack_animal getType: ";
-		stack_animal.makeSound();
-
-		std::cout << "heap_animal getType: " << heap_animal->getType() << std::endl;
-		std::cout << "heap_animal getType: ";
-		heap_animal->makeSound();
-		std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
-		delete heap_animal;
-	}
-	std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
-	std::cout << "ANIMAL TEST - END" << std::endl;
-}
 int main(void){
 	subjectTest();
 	testDog();
@@ -153,27 +132,13 @@ int main(void){
 			polymorphs[i]->makeSound();
 		}
 		for(int i = 0; i < 4; i++){
-			delete polymorphs[i];
+			if (i%2)
+				delete (Cat*)polymorphs[i];
+			else
+				delete (Dog*)polymorphs[i];
 		}
 		
 	}
 	std::cout << "Heap animal / 🐶 / 🐱 start " << std::endl;
-	std::cout << "Stack animal / 🐶 / 🐱 start " << std::endl;
-	{
-		Animal polymorphs[4];
-		for(int i = 0; i < 4; i++){
-			if (i%2)
-			{
-				polymorphs[i] = Cat();
-			}
-			else
-			{
-				polymorphs[i] = Dog();
-			}
-			polymorphs[i].makeSound();
-		}
-		
-	}
-	std::cout << "Stack animal / 🐶 / 🐱 end " << std::endl;
 	return (0);
 }
