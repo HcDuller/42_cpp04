@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:24:47 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/14 17:21:13 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:49:00 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal &origin){
 	return (*this);
 };
 WrongAnimal::~WrongAnimal(){
-	std::cout << "🐖 WrongAnimal has been deleted. (default destructor)" << std::endl;
+	std::cout << "🐖💀 WrongAnimal has been deleted. (default destructor)" << std::endl;
 };
 void WrongAnimal::makeSound() const{
 	std::cout << "🐖" << this->type << " WrongAnimal is trying to make sound." << std::endl;

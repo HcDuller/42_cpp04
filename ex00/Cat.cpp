@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:08:24 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/14 16:01:42 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:48:07 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cat& Cat::operator=(const Cat& origin){
 	return (*this);
 };
 Cat::~Cat(){
-	std::cout << "🐱 has been deleted (default constructor)." << std::endl;
+	std::cout << "🐱💀 has been deleted (default constructor)." << std::endl;
 };
 void Cat::makeSound() const{
 	std::cout << "🐱 << Meow... Meow..." << std::endl;

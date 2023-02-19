@@ -29,7 +29,7 @@ WrongCat& WrongCat::operator=(const WrongCat& origin){
 	return (*this);
 };
 WrongCat::~WrongCat(){
-	std::cout << "🐱 has been deleted (default constructor)." << std::endl;
+	std::cout << "🐱💀 has been deleted (default constructor)." << std::endl;
 };
 void WrongCat::makeSound() const{
 	std::cout << "🐱 << Meow... Meow..." << std::endl;
