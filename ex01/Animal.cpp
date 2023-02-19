@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:24:47 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/19 13:22:43 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:10:16 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Animal& Animal::operator=(const Animal &origin){
 	return (*this);
 };
 Animal::~Animal(){
-	std::cout << "🦄A base Animal has been deleted. (default destructor)" << std::endl;
+	std::cout << "🦄💀A base Animal has been deleted. (default destructor)" << std::endl;
 };
 void Animal::makeSound() const{
 	std::cout << "🦄A " << this->type << " animal is trying to make sound." << std::endl;

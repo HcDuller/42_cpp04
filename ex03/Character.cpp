@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:58:28 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/18 15:50:55 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 18:28:22 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void Character::unequip(int idx){
 	}
 };
 void Character::use(int idx, ICharacter& target){
-	if(idx >= this->_used_slots)
+	if(idx >= this->_used_slots || idx < 0)
 		return;
 	this->_slots[idx]->use(target);
 };
