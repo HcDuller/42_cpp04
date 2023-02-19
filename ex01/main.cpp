@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:53:32 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/16 16:59:51 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 13:03:33 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int main(void){
 	subjectTest();
 	testDog();
 	testCat();
-	std::cout << "Heap animal / 🐶 / 🐱 end " << std::endl;
+	std::cout  << std::endl << "Heap animal / 🐶 / 🐱 start " << std::endl;
 	{
 		Animal *polymorphs[4];
 		for(int i = 0; i < 4; i++){
@@ -157,8 +157,8 @@ int main(void){
 		}
 		
 	}
-	std::cout << "Heap animal / 🐶 / 🐱 start " << std::endl;
-	std::cout << "Stack animal / 🐶 / 🐱 start " << std::endl;
+	std::cout << "Heap animal / 🐶 / 🐱 end " << std::endl;
+	std::cout  << std::endl << "Stack animal / 🐶 / 🐱 start " << std::endl;
 	{
 		Animal polymorphs[4];
 		for(int i = 0; i < 4; i++){

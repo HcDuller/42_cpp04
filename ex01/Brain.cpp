@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 20:00:01 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/15 00:08:25 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 13:06:17 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ Brain& Brain::operator=(const Brain& origin){
 	return (*this);
 };
 Brain::~Brain(){
-	std::cout << "🧠 Default constructor called." << std::endl;
+	std::cout << "🧠💀 Default destructor called." << std::endl;
 };
