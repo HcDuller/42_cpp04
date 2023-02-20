@@ -6,24 +6,70 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:53:32 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/19 13:03:33 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 23:07:58 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
 void subjectTest(){
-	std::cout << std::endl << "SUBJECT TEST - START" << std::endl;
+	std::cout << std::endl << "SUBJECT TEST - START" << std::endl << std::endl;
 	{
-		const Animal *j = new Dog();
-		const Animal *i = new Cat();
-		delete j;
+	std::cout << std::endl << "Half/Half Animal Array" << std::endl;
+		Animal *animals[4];
+		animals[0] = new Dog();
+		animals[1] = new Cat();
+		animals[2] = new Dog();
+		animals[3] = new Cat();
+
+		std::cout << std::endl << std::endl ;
+		animals[0]->makeSound();
+		animals[1]->makeSound();
+		animals[2]->makeSound();
+		animals[3]->makeSound();
+		std::cout << std::endl << std::endl ;
+		for (int i = 0; i < 4; i++){
+			delete animals[i];
+		}
+		
+	}
+	std::cout << std::endl << "SUBJECT TEST - pt2" << std::endl << std::endl;
+	{
+	std::cout << std::endl << "subject copied" << std::endl;
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound(); //will output the cat sound!
+		std::cout << j->getType() << " " << std::endl;
+		j->makeSound();
 		delete i;
+		delete j;
+	}
+	std::cout << std::endl << "SUBJECT TEST - pt3" << std::endl << std::endl;
+	{
+		std::cout << std::endl << "Deep copy" << std::endl;
+		Dog* dogs[2];
+		Cat* cats[2];
+		dogs[0] = new Dog();
+		dogs[1] = new Dog(*dogs[0]);
+		cats[0] = new Cat();
+		cats[1] = new Cat(*cats[0]);
+
+		std::cout << "dogs[0] idea address: " << &(dogs[0]->getBrain().ideas[0]) << std::endl;
+		std::cout << "dogs[1] idea address: " << &(dogs[1]->getBrain().ideas[0]) << std::endl;
+		std::cout << "cats[0] idea address: " << &(cats[0]->getBrain().ideas[0]) << std::endl;
+		std::cout << "cats[1] idea address: " << &(cats[1]->getBrain().ideas[0]) << std::endl;
+
+		delete dogs[0];
+		delete dogs[1];
+		delete cats[0];
+		delete cats[1];
 	}
 	std::cout << "SUBJECT TEST - END" << std::endl;
 }
@@ -42,17 +88,11 @@ void wrongSubjectTest(){
 	std::cout << "WRONG SUBJECT TEST - END" << std::endl;
 }
 void testDog(){
-	std::cout << std::endl << "🐶🐶🐶START🐶🐶🐶" << std::endl;
+	std::cout << std::endl << "DOG TEST - START" << std::endl;
 	{
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
 		Dog stack_dog;
 		Dog *heap_dog = new Dog();
-		Dog cpy_dog(stack_dog);
-		Dog ass_dog;
-		Animal *animal_ptr = &ass_dog;
-		ass_dog = stack_dog;
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
-	
+
 		std::cout << "stack_dog getType: " << stack_dog.getType() << std::endl;
 		std::cout << "stack_dog getType: ";
 		stack_dog.makeSound();
@@ -60,35 +100,17 @@ void testDog(){
 		std::cout << "heap_dog getType: " << heap_dog->getType() << std::endl;
 		std::cout << "heap_dog getType: ";
 		heap_dog->makeSound();
-
-		std::cout << "cpy_dog getType: " << cpy_dog.getType() << std::endl;
-		std::cout << "cpy_dog getType: ";
-		heap_dog->makeSound();
-
-		std::cout << "animal_ptr getType: " << animal_ptr->getType() << std::endl;
-		std::cout << "animal_ptr getType: ";
-		animal_ptr->makeSound();
-		std::cout << "Start deep copy demonstration: " << std::endl << std::endl;
-		std::cout << "stack_dog ideas address: " << &(stack_dog.brain->ideas[0]) << " | content: " << stack_dog.brain->ideas[0] << std::endl;
-		std::cout << "cpy_dog ideas address:   " << &(cpy_dog.brain->ideas[0])   << " | content: " << cpy_dog.brain->ideas[0] << std::endl;
-		std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
 		delete heap_dog;
 	}
-	std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
-	std::cout << "🐶🐶🐶_END_🐶🐶🐶" << std::endl;
+	std::cout << "DOG TEST - END" << std::endl;
 }
+
 void testCat(){
-	std::cout << std::endl << "🐱🐱🐱START🐱🐱🐱" << std::endl;
+	std::cout << std::endl << "CAT TEST - START" << std::endl;
 	{
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
 		Cat stack_cat;
 		Cat *heap_cat = new Cat();
-		Cat cpy_cat(stack_cat);
-		Cat ass_cat;
-		Animal *animal_ptr = &ass_cat;
-		ass_cat = stack_cat;
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
-	
+
 		std::cout << "stack_cat getType: " << stack_cat.getType() << std::endl;
 		std::cout << "stack_cat getType: ";
 		stack_cat.makeSound();
@@ -96,30 +118,15 @@ void testCat(){
 		std::cout << "heap_cat getType: " << heap_cat->getType() << std::endl;
 		std::cout << "heap_cat getType: ";
 		heap_cat->makeSound();
-
-		std::cout << "cpy_cat getType: " << cpy_cat.getType() << std::endl;
-		std::cout << "cpy_cat getType: ";
-		heap_cat->makeSound();
-
-		std::cout << "animal_ptr getType: " << animal_ptr->getType() << std::endl;
-		std::cout << "animal_ptr getType: ";
-		animal_ptr->makeSound();
-		std::cout << "Start deep copy demonstration: " << std::endl << std::endl;
-		std::cout << "stack_cat ideas address: " << &(stack_cat.brain->ideas[0]) << " | content: " << stack_cat.brain->ideas[0] << std::endl;
-		std::cout << "cpy_cat ideas address:   " << &(cpy_cat.brain->ideas[0])   << " | content: " << cpy_cat.brain->ideas[0] << std::endl;
-		std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
 		delete heap_cat;
 	}
-	std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
-	std::cout << "🐱🐱🐱_END_🐱🐱🐱" << std::endl;
+	std::cout << "CAT TEST - END" << std::endl;
 }
 void testAnimal(){
 	std::cout << std::endl << "ANIMAL TEST - START" << std::endl;
 	{
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
 		Animal stack_animal;
 		Animal *heap_animal = new Animal();
-		std::cout << "🔨🔨🔨Constructors🔨🔨🔨" << std::endl;
 
 		std::cout << "stack_animal getType: " << stack_animal.getType() << std::endl;
 		std::cout << "stack_animal getType: ";
@@ -128,52 +135,14 @@ void testAnimal(){
 		std::cout << "heap_animal getType: " << heap_animal->getType() << std::endl;
 		std::cout << "heap_animal getType: ";
 		heap_animal->makeSound();
-		std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
 		delete heap_animal;
 	}
-	std::cout << "🚧🚧🚧Descructors🚧🚧🚧" << std::endl;
 	std::cout << "ANIMAL TEST - END" << std::endl;
 }
 int main(void){
 	subjectTest();
-	testDog();
-	testCat();
-	std::cout  << std::endl << "Heap animal / 🐶 / 🐱 start " << std::endl;
-	{
-		Animal *polymorphs[4];
-		for(int i = 0; i < 4; i++){
-			if (i%2)
-			{
-				polymorphs[i] = new Cat();
-			}
-			else
-			{
-				polymorphs[i] = new Dog();
-			}
-			polymorphs[i]->makeSound();
-		}
-		for(int i = 0; i < 4; i++){
-			delete polymorphs[i];
-		}
-		
-	}
-	std::cout << "Heap animal / 🐶 / 🐱 end " << std::endl;
-	std::cout  << std::endl << "Stack animal / 🐶 / 🐱 start " << std::endl;
-	{
-		Animal polymorphs[4];
-		for(int i = 0; i < 4; i++){
-			if (i%2)
-			{
-				polymorphs[i] = Cat();
-			}
-			else
-			{
-				polymorphs[i] = Dog();
-			}
-			polymorphs[i].makeSound();
-		}
-		
-	}
-	std::cout << "Stack animal / 🐶 / 🐱 end " << std::endl;
+	// testDog();
+	// testCat();
+	testAnimal();
 	return (0);
 }
