@@ -6,7 +6,7 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:16:17 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/16 17:47:01 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:25:05 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 class Dog : public Animal
 {
 private:
-	void populateIdeas();
+	Brain* brain;
 public:
 	Dog();
 	Dog(const Dog& origin);
 	Dog& operator=(const Dog& origin);
 	virtual ~Dog();
 	virtual void makeSound() const;
-	virtual const std::string& getType(void) const;
-	Brain* brain;
+	Brain& getBrain(void);
 };

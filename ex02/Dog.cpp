@@ -6,50 +6,40 @@
 /*   By: hde-camp <hde-camp@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:08:24 by hde-camp          #+#    #+#             */
-/*   Updated: 2023/02/19 15:49:47 by hde-camp         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:59:09 by hde-camp         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
+#include "Brain.hpp"
 #include <iostream>
 #include <string>
-#include <sstream>
 
 
-Dog::Dog(): brain(new Brain()){
-	this->type = "Dog";
-	this->populateIdeas();
+Dog::Dog(): Animal(), brain(new Brain()){
 	std::cout << "🐶 has been instantiated (default constructor)." << std::endl;
+	for (int i = 0; i < 100; i++){
+		this->brain->ideas[i] = "🐶Dog likes 🦴";
+	}
+	this->type = "Dog";
 };
-Dog::Dog(const Dog& origin): brain(new Brain()){
-	*this = origin;
+Dog::Dog(const Dog& origin): Animal(), brain(new Brain()){
 	std::cout << "🐶 has been copied (copy constructor)." << std::endl;
+	*this = origin;
 };
 Dog& Dog::operator=(const Dog& origin){
 	std::cout << "🐶 has been copied (copy assingment)." << std::endl;
+	*this->brain = *origin.brain;
 	this->type = origin.type;
-	for(int i = 0; i < 100; i++)
-	{
-		this->brain->ideas[i] = origin.brain->ideas[i];
-	}
 	return (*this);
 };
 Dog::~Dog(){
+	std::cout << "🐶💀 has been deleted (default constructor)." << std::endl;
 	delete this->brain;
-	std::cout << "🐶💀 has been deleted (default destructor)." << std::endl;
-};
-const std::string& Dog::getType(void) const{
-	return (this->type);
 };
 void Dog::makeSound() const{
 	std::cout << "🐶 << BARK!! BARK!!" << std::endl;
 };
-void Dog::populateIdeas(){
-	
-	for(int i = 0; i < 100; i++)
-	{
-		std::stringstream converter;
-		converter << i;
-		this->brain->ideas[i] = "This a 🐶 idea, I wish for " + converter.str() + "🦴.";
-	}
+Brain& Dog::getBrain(void){
+	return (*this->brain);
 };
